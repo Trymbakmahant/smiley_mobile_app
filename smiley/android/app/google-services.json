@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "527824395730",
+    "project_id": "smiley-attendence",
+    "storage_bucket": "smiley-attendence.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527824395730:android:4da7a31bb86495fd457c0b",
+        "android_client_info": {
+          "package_name": "com.smiley"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527824395730-pbq0lo6i812kgbqm6h4uaf0h10cenoop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDiuWyUL9eHgFkd4BjlF8qthOES_n2C5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527824395730-pbq0lo6i812kgbqm6h4uaf0h10cenoop.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
