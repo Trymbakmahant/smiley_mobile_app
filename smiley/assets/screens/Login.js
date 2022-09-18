@@ -7,27 +7,35 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import Home from '../screens/Home';
+import {useContext} from 'react';
+import {AuthContext} from '../navigator/authpro';
 import axios from 'axios';
 // import AppNav from '../navigator/appnav';
 // import Navigation from '../navigator/navigation';
+
 function Login({navigation}) {
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
-
+  const {setUserdata} = React.useContext(AuthContext);
+  // const {setdataofid} = useContext(LoginContext);
   const data = {email: email, password: password};
-  // const check = async () => {
-  //   try {
-  //     console.log(data);
+  const check = async () => {
+    try {
+      console.log(data);
 
-  //     const url = 'http://169.254.150.199:8080/api/auth/login';
+      const url = 'http://169.254.150.199:8080/api/auth/login';
 
-  //     const {data: res} = await axios.post(url, data);
-  //     console.log(res.data.id);
-  //     res.data.id ? <Navigation /> : <AppNav />;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+      const {data: res} = await axios.post(url, data); //: res
+      console.log(res.data);
+      setUserdata(res.data);
+
+      navigation.navigate('Home');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <View style={styles.background}>
       <Image source={require('../img/logo.png')} style={styles.logo} />
@@ -55,9 +63,7 @@ function Login({navigation}) {
             autoCapitalize="none"
           />
         </View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity style={styles.button} onPress={() => check()}>
           <Text style={styles.btnText}>LOGIN</Text>
         </TouchableOpacity>
         <Text

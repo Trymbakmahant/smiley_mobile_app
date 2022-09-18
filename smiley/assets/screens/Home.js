@@ -13,14 +13,17 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {AuthContext} from '../navigator/authpro';
 
 function Home({navigation}, props) {
-  const {logout} = React.useContext(AuthContext);
+  const {userdata} = React.useContext(AuthContext);
+
   // sir object id ko yaha import kar ligiyega aur qr code ready ho jayega
   // mereko thoda dikkat ho raha tha email le ke aane me .
-  const input = 'Smiley Drinks .co';
+  const input = userdata.id;
 
   return (
     <SafeAreaView style={styles.homeScreen}>
-      <TouchableOpacity style={styles.logout_sec} onPress={() => logout()}>
+      <TouchableOpacity
+        style={styles.logout_sec}
+        onPress={() => navigation.navigate('Login')}>
         <Icon name="arrow-right" size={25} color="#0AA1DD" />
         <Text style={styles.logout_txt}>LOGOUT</Text>
       </TouchableOpacity>
@@ -34,7 +37,7 @@ function Home({navigation}, props) {
       <View style={styles.qrSec}>
         <View style={styles.qrContainer}>
           <QRCode
-            value={input}
+            value={userdata.id}
             size={350}
             style={styles.qrCode}
             logo={logo}
