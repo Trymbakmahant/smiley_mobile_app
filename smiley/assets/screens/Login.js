@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Home from '../screens/Home';
 import {useContext} from 'react';
-import {LoginContext} from '../context/logincontext';
+import {AuthContext} from '../navigator/authpro';
 import axios from 'axios';
 // import AppNav from '../navigator/appnav';
 // import Navigation from '../navigator/navigation';
@@ -17,6 +17,7 @@ import axios from 'axios';
 function Login({navigation}) {
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
+  const {setUserdata} = React.useContext(AuthContext);
   // const {setdataofid} = useContext(LoginContext);
   const data = {email: email, password: password};
   const check = async () => {
@@ -25,9 +26,9 @@ function Login({navigation}) {
 
       const url = 'http://169.254.150.199:8080/api/auth/login';
 
-      const {data: res} = await axios.post(url, data);
-      //  setdataofid(res.body);
-      console.log(res.body);
+      const {data: res} = await axios.post(url, data); //: res
+      console.log(res.data);
+      setUserdata(res.data);
 
       navigation.navigate('Home');
     } catch (error) {

@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
   const [loginPending, setLoginPending] = useState(false);
-
+  const [userdata, setUserdata] = useState(null);
   return (
     <AuthContext.Provider
       value={{
@@ -14,6 +14,8 @@ export const AuthProvider = ({children}) => {
         setUser,
         loginPending,
         setLoginPending,
+        userdata,
+        setUserdata,
         login: async (email, password) => {
           try {
             setLoginPending(true);
